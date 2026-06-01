@@ -24,3 +24,6 @@ Route::get('/nivel-acesso/listar', [NivelAcessoController::class, 'listar'])
 Route::delete('/nivel-acesso/deletar/{id}', [NivelAcessoController::class, 'deletar'])
 ->name('nivel-acesso.deletar');
 
+// Rota de atualização
+Route::get('/nivel-acesso/atualizar/{id}', [NivelAcessoController::class, 'atualizar'])
+->name('nivel-acesso.atualizar');

@@ -326,9 +326,9 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="javascript:void(0);"
-                                            ><i class="bx bx-edit-alt me-1"></i> Editar</a
-                                        >
+                                        <a class="dropdown-item" href="{{ route('nivel-acesso.atualizar', $nivel->id) }}"
+                                            ><i class="bx bx-edit-alt me-1"></i> Editar</a>
+
                                         <form action="{{ route('nivel-acesso.deletar', $nivel->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja deletar este registro?');">
                                             @csrf
                                             @method('DELETE')
@@ -342,7 +342,7 @@
                                     </td>
                                 </tr>
                                 @empty
-                                <tr>Nenhum Nível de Acesso Encontrado 🔎</tr>
+                                <tr>  Nenhum Nível de Acesso Encontrado 🔎</tr>
                                 @endforelse
                                 </tbody>
                             </table>

@@ -143,7 +143,7 @@
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-account-settings-notifications.html" class="menu-link">
+                  <a href="{{ route('nivel-acesso.listar') }}" class="menu-link">
                     <div class="text-truncate" data-i18n="Notifications">Listagem</div>
                   </a>
                 </li>

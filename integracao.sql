@@ -48,4 +48,4 @@ CREATE TABLE turmas (
     updated_at DATETIME NULL
 ) ENGINE=InnoDB;
 
-select * from usuarios;
+select * from nivel_acesso;

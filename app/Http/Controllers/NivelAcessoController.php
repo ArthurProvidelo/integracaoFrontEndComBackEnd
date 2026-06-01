@@ -35,12 +35,10 @@ class NivelAcessoController extends Controller
 
     }
 
-    // public function atualizar($id){
-    //     $produto = Produto::findOrFail($id); // Busca o produto pelo ID
-    //     $setores = Setores::get();
-    //     // select * from produtos where id = $id
-    //     return view('atualizarProduto', compact('produto','setores'));
-    // }
+    public function atualizar($id){
+        $nivelAcesso = NivelAcesso::findOrFail($id); // Busca pelo ID
+        return view('nivel-acesso.atualizar', compact('nivelAcesso'));
+    }
 
     // public function update(Request $request, $id){
     //     $request->validate([
