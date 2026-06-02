@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\NivelAcesso;
+use Exception;
 use Exeption;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,7 @@ class NivelAcessoController extends Controller
             ]);
 
             return redirect()->back()->with('success','Nivel de Acesso cadastrado com sucesso!');
-        }catch(Exeption $e){
+        }catch(Exception $e){
             return redirect()->back()->with('error','Erro ao Cadastrar Nível de Acesso!');
         }
 
@@ -40,33 +41,19 @@ class NivelAcessoController extends Controller
         return view('nivel-acesso.atualizar', compact('nivelAcesso'));
     }
 
-    // public function update(Request $request, $id){
-    //     $request->validate([
-    //         'nome' => 'required|string|max:255',
-    //         'quantidade' => 'required|numeric|max:255',
-    //         'valor' => 'required|numeric',
-    //         'setor_id' => 'nullable|exists:setores,id' 
-    //         // para poder ser nulo ou existir na tabela setores
-    //     ]);
+    public function update(Request $request, $id){
+        $request->validate([
+            'nivelAcesso' => 'required|string|max:255'
+        ]);
 
-    //     $produto = Produto::findOrFail($id); // buscar aluno para ser atualizado
-    //     $detalhe = DetalheProdutos::where('produto_id', $produto->id)->first();
+        $nivelDeAcesso = NivelAcesso::findOrFail($id); // buscar o id que vai ser atualizado
+    
+        $nivelDeAcesso->nivel_acesso = $request->nivelAcesso; // atualizando o campo nivel_acesso
 
-    //     $produto->nome = $request->nome; // atualizando o campo nome
-    //     $produto->quantidade = $request->quantidade; // atualizando o campo quantidade
-    //     $produto->valor = $request->valor; // atualizando o campo valor
-    //     $produto->setor_id = $request->setor_id; // atualizando o campo setor_id
+        $nivelDeAcesso->save(); // salvando no banco de dados (fazendo update)
 
-    //     $produto->save(); // salvando no banco de dados(fazendo update)
-
-    //     $detalhe->descricao = $request->descricao;
-    //     $detalhe->tamanho = $request->tamanho;
-    //     $detalhe->peso = $request->peso;
-
-    //     $detalhe->save();
-
-    //     return redirect()->back()->with('success','Produto atualizado com suceso');
-    // }
+        return redirect()->back()->with('success','Nível de Acesso atualizado com sucesso!');
+    }
 
     public function deletar(int $id){
         $nivelAcesso = NivelAcesso::findOrFail($id); // buscar o NivelAcesso para depois deletar

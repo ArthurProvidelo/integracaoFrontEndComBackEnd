@@ -49,3 +49,5 @@ CREATE TABLE turmas (
 ) ENGINE=InnoDB;
 
 select * from nivel_acesso;
+
+select * from usuarios;
