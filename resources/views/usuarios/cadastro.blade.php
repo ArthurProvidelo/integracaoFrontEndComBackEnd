@@ -174,12 +174,12 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="pages-misc-error.html" class="menu-link">
+                  <a href="{{ route('usuarios.cadastro')}}" class="menu-link">
                     <div class="text-truncate" data-i18n="Error">Cadastro</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                  <a href="{{ route('usuarios.listar')}}" class="menu-link">
                     <div class="text-truncate" data-i18n="Under Maintenance">Listagem</div>
                   </a>
                 </li>

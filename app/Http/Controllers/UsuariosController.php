@@ -52,19 +52,28 @@ class UsuariosController extends Controller
         return view('usuarios.atualizar', compact('usuarios','nivelAcesso'));
     }
 
-    // public function update(Request $request, $id){
-    //     $request->validate([
-    //         'nivelAcesso' => 'required|string|max:255'
-    //     ]);
+    public function update(Request $request, $id){
+        $request->validate([
+            $request->validate([
+            'nome' => 'required|string|max:255',
+            'data_nascimento' => 'required',
+            'telefone' => 'required|string|max:255',
+            'cpf' => 'required|string|max:255',
+            'nivelAcessoId' => 'required',
+            ]) 
+        ]);
 
-    //     $nivelDeAcesso = NivelAcesso::findOrFail($id); // buscar o id que vai ser atualizado
+        $usuarios = Usuarios::findOrFail($id); // buscar o id que vai ser atualizado
     
-    //     $nivelDeAcesso->nivel_acesso = $request->nivelAcesso; // atualizando o campo nivel_acesso
+        $usuarios->nome = $request->nome; // atualizando o campo nome
+        $usuarios->data_nascimento = $request->data_nascimento; // atualizando o campo data_nascimento
+        $usuarios->telefone = $request->telefone; // atualizando o campo telefone
+        $usuarios->cpf = $request->cpf; // atualizando o campo cpf
+        $usuarios->nivel_acesso_id = $request->nivelAcessoId; // atualizando o campo nivel_acesso
+        $usuarios->save(); // salvando no banco de dados (fazendo update)
 
-    //     $nivelDeAcesso->save(); // salvando no banco de dados (fazendo update)
-
-    //     return redirect()->back()->with('success','Nível de Acesso atualizado com sucesso!');
-    // }
+        return redirect()->back()->with('success','Nível de Acesso atualizado com sucesso!');
+    }
 
     public function deletar(int $id){
         $usuarios = Usuarios::findOrFail($id); // buscar o usuarios para depois deletar

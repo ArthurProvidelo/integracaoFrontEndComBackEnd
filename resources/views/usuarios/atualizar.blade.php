@@ -302,7 +302,7 @@
                   <div class="card">
                     <h5 class="card-header text-center">Atualizar Usuários</h5>
                     <div class="card-body">
-                      <form action="{{ route('usuarios.salvar')}}" method="POST">
+                      <form action="{{ route('usuarios.update', $usuarios->id)}}" method="POST">
                         @csrf
                         @method('PUT')
                                 <div class="row">
